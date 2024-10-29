@@ -4,7 +4,7 @@
 
 2. Contexte : Entreprise fondée sur la base de l'univers d'Harry Potter et plus particulièrement la célèbre ligne de chemin de fer Pouldard Express
    
-   - Problème : Actuellement, la gestion des trajets pour les élèves se fait de manière non optimisée, avec des arrêts fréquents et des temps de transport allongés. Cela entraîne des retards, des surcharges dans certaines parties du train, et des élèves mal répartis entre les wagons. L’entreprise NimbusRail souhaite une solution pour optimiser les trajets, améliorer la gestion des arrêts et garantir une répartition efficace des élèves dans le train en direction de Poudlard.
+   - Problème : Actuellement, la gestion des trajets pour les élèves se fait de manière non optimisée, avec des arrêts fréquents et des temps de transport allongés. Cela entraîne des retards, des surcharges dans certaines parties du train, et des élèves mal répartis entre les wagons. L’entreprise Nimbus Railway souhaite une solution pour optimiser les trajets, améliorer la gestion des arrêts et garantir une répartition efficace des élèves dans le train en direction de Poudlard.
   
    - Solution proposée :
      Le projet consiste à développer une application en JavaFX qui permet de planifier et d’optimiser les trajets vers Poudlard. L’application inclura une base de données avec les informations sur les élèves et leurs points de départ. Elle permettra aux administrateurs de Poudlard et aux superviseurs de Nimbus Railway de gérer les trajets, les horaires, et la répartition des élèves dans le train.
@@ -30,5 +30,5 @@ Analyse des trajets pour identifier les améliorations possibles (ex. : trajets 
 Types d'utilisateurs
 Administrateur de Poudlard :
 Responsable de la gestion des trajets, de l’attribution des élèves aux wagons, et de la planification des arrêts.
-Superviseur NimbusRail :
+Superviseur Nimbus Railway :
 Supervise le réseau ferroviaire pour s’assurer que les horaires sont respectés et que les trajets vers Poudlard sont optimisés.
