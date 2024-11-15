@@ -1,8 +1,8 @@
+Equipe : Adam SABOR, Elijah DABO, Fasil MOUGAMADOU
+
 # Nimbus_Railway
 
-1. Equipe : Adam SABOR, Elijah DABO, Fasil MOUGAMADOU
-
-2. Contexte : Entreprise fondée sur la base de l'univers d'Harry Potter et plus particulièrement la célèbre ligne de chemin de fer Pouldard Express
+Contexte : Entreprise fondée sur la base de l'univers d'Harry Potter et plus particulièrement la célèbre ligne de chemin de fer Poudlard Express
    
    - Problème : Actuellement, la gestion des trajets pour les élèves se fait de manière non optimisée, avec des arrêts fréquents et des temps de transport allongés. Cela entraîne des retards, des surcharges dans certaines parties du train, et des élèves mal répartis entre les wagons. L’entreprise Nimbus Railway souhaite une solution pour optimiser les trajets, améliorer la gestion des arrêts et garantir une répartition efficace des élèves dans le train en direction de Poudlard.
   
