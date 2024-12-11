@@ -1,0 +1,87 @@
+# Cahier des Charges : Nimbus Railway
+
+## 1. **Présentation du projet**
+
+### Contexte
+Nimbus Railway est une entreprise fictive inspirée de l'univers d'Harry Potter, responsable de la gestion des trajets du Poudlard Express. Actuellement, la gestion des trajets est inefficace :
+- Arrêts non optimisés.
+- Temps de transport prolongés.
+- Mauvaise répartition des élèves dans les wagons.
+
+L'objectif du projet est de développer une solution pour résoudre ces problèmes et offrir une gestion optimisée des trajets ferroviaires.
+
+### Objectifs du projet
+- Réduire les temps de trajet grâce à une optimisation des arrêts.
+- Améliorer la répartition des élèves dans les wagons.
+- Fournir des outils de suivi des horaires et des rapports pour une gestion efficace.
+
+---
+
+## 2. **Besoin exprimé**
+
+### Problèmes identifiés
+1. Temps de trajet trop longs.
+2. Mauvaise organisation des arrêts.
+3. Répartition inégale des élèves dans les wagons.
+4. Absence d'outils de suivi des performances des trajets.
+
+### Solution envisagée
+Développer une application en java et  JavaFX comprenant :
+- Une base de données centralisée pour la gestion des élèves et des trajets.
+- Une interface utilisateur pour planifier les trajets et visualiser les informations.
+- Un système de génération de rapports pour analyser et améliorer les performances.
+
+---
+
+## 3. **Description des fonctionnalités**
+
+### Fonctionnalités principales
+#### Gestion des trajets
+- Planification des trajets vers la gare de Poudlard.
+- Optimisation des arrêts en fonction des points de départ des élèves.
+
+#### Gestion des élèves
+- Ajout et mise à jour des informations des élèves (nom, point de départ).
+- Répartition automatique des élèves dans les wagons pour équilibrer la charge.
+
+#### Suivi des horaires
+- Affichage des horaires de départ et d'arrivée.
+- Ajustement dynamique pour minimiser les temps d'attente et éviter les retards.
+
+#### Rapports
+- Génération de rapports détaillés sur les trajets :
+  - Temps de trajet.
+  - Nombre d'élèves transportés.
+  - Arrêts réalisés.
+- Analyse des trajets pour identifier des pistes d'amélioration.
+
+### Types d'utilisateurs
+1. **Administrateur de Poudlard** :
+   - Gère la planification des trajets.
+   - Répartit les élèves dans les wagons.
+   - Décide des arrêts.
+2. **Superviseur Nimbus Railway** :
+   - Supervise les horaires et le respect des trajets.
+   - Analyse les rapports pour améliorer le service.
+
+---
+
+
+
+## 6. **Planification préliminaire**
+
+### Étapes principales
+1. **Étude des besoins** (1 semaine)
+   - Analyse des problèmes et attentes.
+2. **Conception UML** (2 semaines)
+   - Création des diagrammes des cas d’utilisation et des classes.
+3. **Développement de l’application** (3 semaines)
+   - Création de l'interface utilisateur.
+   - Intégration de la base de données.
+4. **Tests et ajustements** (1 semaine)
+   - Validation des fonctionnalités et corrections.
+5. **Livraison finale** (1 semaine)
+   - Documentation et présentation du projet.
+
+---
+
