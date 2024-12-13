@@ -30,5 +30,5 @@ Analyse des trajets pour identifier les améliorations possibles (ex. : trajets 
 Types d'utilisateurs
 Administrateur de Poudlard :
 Responsable de la gestion des trajets, de l’attribution des élèves aux wagons, et de la planification des arrêts.
-Superviseur Nimbus Railway :
-Supervise le réseau ferroviaire pour s’assurer que les horaires sont respectés et que les trajets vers Poudlard sont optimisés.
+controleur Nimbus Railway :
+controle le réseau ferroviaire pour s’assurer que les horaires sont respectés et que les trajets vers Poudlard sont optimisés.
