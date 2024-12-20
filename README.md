@@ -1,6 +1,7 @@
 Equipe : Adam SABOR, Elijah DABO, Fasil MOUGAMADOU
+13/12/2024
 
-# Nimbus_Railway
+# Cahier des charges Nimbus_Railway
 
 Contexte : Entreprise fondée sur la base de l'univers d'Harry Potter et plus particulièrement la célèbre ligne de chemin de fer Poudlard Express
    
