@@ -33,3 +33,6 @@ Administrateur de Poudlard :
 Responsable de la gestion des trajets, de l’attribution des élèves aux wagons, et de la planification des arrêts.
 controleur Nimbus Railway :
 controle le réseau ferroviaire pour s’assurer que les horaires sont respectés et que les trajets vers Poudlard sont optimisés.
+
+Diagramme de cas d'utilisation: 
+<img width="360" alt="Capture d’écran 2025-01-08 à 12 42 54" src="https://github.com/user-attachments/assets/d1dab42f-f6e4-44e9-bbef-1ec8c10a192a" />
