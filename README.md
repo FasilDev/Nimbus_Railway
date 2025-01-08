@@ -40,3 +40,12 @@ Diagramme de cas d'utilisation:
 
 
 <img width="360" alt="Capture d’écran 2025-01-08 à 12 42 54" src="https://github.com/user-attachments/assets/d1dab42f-f6e4-44e9-bbef-1ec8c10a192a" />
+
+
+diagramme de classe metier :
+
+
+
+
+![Capture_decran_2025-01-08_155108](https://github.com/user-attachments/assets/81f35158-f98b-4577-bef9-cb8b5a587b5f)
+
