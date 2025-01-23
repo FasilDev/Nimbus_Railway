@@ -3,6 +3,9 @@ Equipe : Adam SABOR, Elijah DABO, Fasil MOUGAMADOU
 
 
 planning gant : https://docs.google.com/spreadsheets/d/1RrFoDOU_jwca1mLTRKR9XV68EEBvE3i5lNRb7armnZg/edit?gid=0#gid=0
+
+![image](https://github.com/user-attachments/assets/f478a8a8-fc38-4e6a-bdb8-529075d5afec)
+
 # Cahier des charges Nimbus_Railway
 Contexte : Entreprise fondée sur la base de l'univers d'Harry Potter et plus particulièrement la célèbre ligne de chemin de fer Poudlard Express
    
