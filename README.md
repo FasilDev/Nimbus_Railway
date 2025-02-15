@@ -47,7 +47,9 @@ Diagramme de cas d'utilisation:
 
 diagramme de classe metier :
 
-[diagramme classe metier.pdf](https://github.com/user-attachments/files/18812332/diagramme.classe.metier.pdf)
+
+
+<img width="1086" alt="Capture d’écran 2025-02-15 à 20 22 45" src="https://github.com/user-attachments/assets/d95b2538-3073-497c-acb5-a5c4b1105a04" />
 
 
 
