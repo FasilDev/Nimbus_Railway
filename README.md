@@ -47,8 +47,8 @@ Diagramme de cas d'utilisation:
 
 diagramme de classe metier :
 
+[diagramme classe metier.pdf](https://github.com/user-attachments/files/18812332/diagramme.classe.metier.pdf)
 
 
 
-![Capture_decran_2025-01-08_155108](https://github.com/user-attachments/assets/81f35158-f98b-4577-bef9-cb8b5a587b5f)
 
