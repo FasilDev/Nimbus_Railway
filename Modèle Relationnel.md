@@ -42,6 +42,13 @@
 | prenom     | VARCHAR(50) | NOT NULL |
 | maison     | ENUM('SERDAIGLE', 'GRYFFONDOR', 'SERPENTARD', 'POUFSOUFFLE') | NOT NULL |
 
+## 6 Trajet_élève
+| Champ         | Type           | Contraintes  |
+|--------------|--------------|-------------|
+| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
+|id_élève     | INT | FOREIGN KEY |
+|id_trajet    | INT | FOREIGN KEY |
+
 ## 🔗 Clés Étrangères & Contraintes
 - **Trajet** : Associe un train à un arrêt de départ et un arrêt d'arrivée.
 - **Utilisateur** : Peut être **ADMIN** ou **CONTROLEUR** (ENUM `role`).
@@ -49,8 +56,3 @@
 - **Train** : Classé selon différents **types de train**.
 
 ---
-
-📌 **Ce modèle est maintenant parfaitement aligné avec ta BDD !** 🚀  
-Tu peux l’intégrer dans la documentation du projet GitHub/GitLab.  
-
-Dis-moi si tu veux des modifications ou si on passe à la suite ! 🔥
