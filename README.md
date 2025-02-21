@@ -49,6 +49,6 @@ diagramme de classe metier :
 
 
 
-<img width="632" alt="Capture d’écran 2025-02-21 à 15 17 18" src="https://github.com/user-attachments/assets/02fde670-7509-4b20-b624-13e6e80c9c6c" />
+<img width="688" alt="Capture d’écran 2025-02-21 à 16 25 14" src="https://github.com/user-attachments/assets/ccfb4d5f-c3f6-411d-871f-a30e7d9dc9f9" />
 
 
