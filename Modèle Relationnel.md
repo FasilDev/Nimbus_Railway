@@ -42,12 +42,12 @@
 | prenom     | VARCHAR(50) | NOT NULL |
 | maison     | ENUM('SERDAIGLE', 'GRYFFONDOR', 'SERPENTARD', 'POUFSOUFFLE') | NOT NULL |
 
-## 6 Trajet_élève
+## 6️⃣ Trajet_élève
 | Champ         | Type           | Contraintes  |
 |--------------|--------------|-------------|
 | id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-|id_élève     | INT | FOREIGN KEY |
-|id_trajet    | INT | FOREIGN KEY |
+|id_élève     | INT | FOREIGN KEY → élève(id)|
+|id_trajet    | INT | FOREIGN KEY → Trajet(id)|
 
 ## 🔗 Clés Étrangères & Contraintes
 - **Trajet** : Associe un train à un arrêt de départ et un arrêt d'arrivée.
