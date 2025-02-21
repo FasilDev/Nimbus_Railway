@@ -13,3 +13,12 @@
 > - Les contrôleurs Nimbus Railway : chargés de la supervision opérationnelle
 > 
 > Cette solution permettra de rationaliser les opérations, améliorer l'expérience des élèves et optimiser l'utilisation des ressources ferroviaires.
+>
+# Contraintes techniques : 
+
+**Conception de l'application :** 
+> Diagramme : Mermaid, Lucidchart
+> Maquette : Canva/Figma
+
+**Développement de l'application :** 
+> Java/JavaFX version : 22.0.2, SceneBuilder 
