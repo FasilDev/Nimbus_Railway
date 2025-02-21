@@ -1,58 +1,66 @@
-# 📌 Modèle Relationnel Révisé
+# Modèle Relationnel
 
-## 1️⃣ Utilisateur
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-| nom        | VARCHAR(50) | NOT NULL |
-| prenom     | VARCHAR(50) | NOT NULL |
-| identifiant | VARCHAR(50) | UNIQUE, NOT NULL |
-| mot_de_passe | VARCHAR(255) | NOT NULL |
-| role       | ENUM('ADMIN', 'CONTROLEUR') | NOT NULL |
+---
 
-## 2️⃣ Train
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-| nombre_wagons | INT | NOT NULL |
-| type_train | ENUM('NIMBUS 4000', 'POUDLARD EXPRESS', 'POUDLARD EXPRESS 2.0') | NOT NULL |
+## Table `Utilisateur`
+Utilisateur(id: int(3), identifiant: varchar(50), mot_de_passe: varchar(255), nom: varchar(50), prenom: varchar(50), role: enum('ADMIN', 'CONTROLEUR'))  
+- **Clé primaire** : id  
+- **Clé étrangère** : --  
+- **Champ unique** : identifiant  
 
-## 3️⃣ Arret
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-| nom        | VARCHAR(100) | NOT NULL |
-| type_arret | ENUM('DEPART', 'TERMINUS') | NOT NULL |
+---
 
-## 4️⃣ Trajet
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-| horaire_depart | DATETIME | NOT NULL |
-| horaire_arrivee | DATETIME | NOT NULL |
-| train_id    | INT | FOREIGN KEY → Train(id) |
-| arret_depart_id | INT | FOREIGN KEY → Arret(id) |
-| arret_arrivee_id | INT | FOREIGN KEY → Arret(id) |
+## Table `Train`
+Train(id: int(3), nombre_wagons: int, type_train: enum('NIMBUS 4000', 'POUDLARD EXPRESS', 'POUDLARD EXPRESS 2.0'))  
+- **Clé primaire** : id  
+- **Clé étrangère** : --  
+- **Champ unique** : --  
 
-## 5️⃣ Eleve
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-| nom        | VARCHAR(50) | NOT NULL |
-| prenom     | VARCHAR(50) | NOT NULL |
-| maison     | ENUM('SERDAIGLE', 'GRYFFONDOR', 'SERPENTARD', 'POUFSOUFFLE') | NOT NULL |
+---
 
-## 6️⃣ Trajet_élève
-| Champ         | Type           | Contraintes  |
-|--------------|--------------|-------------|
-| id          | INT | PRIMARY KEY, AUTO_INCREMENT |
-|id_élève     | INT | FOREIGN KEY → élève(id)|
-|id_trajet    | INT | FOREIGN KEY → Trajet(id)|
+## Table `Arret`
+Arret(id: int(3), nom: varchar(100), type_arret: enum('DEPART', 'TERMINUS'))  
+- **Clé primaire** : id  
+- **Clé étrangère** : --  
+- **Champ unique** : nom  
 
-## 🔗 Clés Étrangères & Contraintes
-- **Trajet** : Associe un train à un arrêt de départ et un arrêt d'arrivée.
-- **Utilisateur** : Peut être **ADMIN** ou **CONTROLEUR** (ENUM `role`).
-- **Élève** : Appartient à une **maison** (ENUM `maison`).
-- **Train** : Classé selon différents **types de train**.
+---
+
+## Table `Trajet`
+Trajet(id: int(3), horaire_depart: datetime, horaire_arrivee: datetime, train_id: int(3), arret_depart_id: int(3), arret_arrivee_id: int(3))  
+- **Clé primaire** : id  
+- **Clé étrangère** :  
+  - train_id fait référence à Train(id)  
+  - arret_depart_id fait référence à Arret(id)  
+  - arret_arrivee_id fait référence à Arret(id)  
+- **Champ unique** : --  
+
+---
+
+## Table `Eleve`
+Eleve(id: int(3), nom: varchar(50), prenom: varchar(50), maison: enum('SERDAIGLE', 'GRYFFONDOR', 'SERPENTARD', 'POUFSOUFFLE'))  
+- **Clé primaire** : id  
+- **Clé étrangère** : --  
+- **Champ unique** : --  
+
+---
+
+## Table `Trajet_élève`
+Trajet_élève(id: int(3), id_élève: int(3), id_trajet: int(3))  
+- **Clé primaire** : id  
+- **Clé étrangère** :  
+  - id_élève fait référence à Eleve(id)  
+  - id_trajet fait référence à Trajet(id)  
+- **Champ unique** : --  
+
+---
+
+## 🔗 Clés Étrangères & Contraintes  
+- **Utilisateur** : identifiant unique, mot de passe sécurisé.  
+- **Train** : lié aux trajets par train_id.  
+- **Arret** : utilisé dans les trajets comme point de départ et d'arrivée.  
+- **Trajet** : associe un train et deux arrêts avec des horaires.  
+- **Eleve** : appartient à une maison spécifique.  
+- **Trajet_élève** : relie les élèves aux trajets empruntés.  
 
 ---
