@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fxml.TrajetsManagement"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="com.nimbus_railway.controllers.TrajetController"
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #FF9800; -fx-padding: 10px;">
+            <Label text="Gestion des Trajets" textFill="WHITE" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnRetour" text="Retour" onAction="#handleRetour"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
 
-</AnchorPane>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20px;">
+            <HBox spacing="10">
+                <Label text="Départ:"/>
+                <TextField fx:id="txtDepart"/>
+
+                <Label text="Arrivée:"/>
+                <TextField fx:id="txtArrivee"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Horaire Départ:"/>
+                <TextField fx:id="txtHoraireDepart" promptText="dd/MM/yyyy HH:mm"/>
+                <Label text="Horaire Arrivée:"/>
+                <TextField fx:id="txtHoraireArrivee" promptText="dd/MM/yyyy HH:mm"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Train ID:"/>
+                <TextField fx:id="txtTrainId"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter"/>
+                <Button fx:id="btnSupprimer" text="Supprimer" onAction="#handleSupprimer"/>
+                <Label fx:id="lblMessage" textFill="RED"/>
+            </HBox>
+
+            <TableView fx:id="tableTrajets" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colDepart" text="Départ" prefWidth="150"/>
+                    <TableColumn fx:id="colArrivee" text="Arrivée" prefWidth="150"/>
+                    <TableColumn fx:id="colTrain" text="Train" prefWidth="150"/>
+                    <TableColumn fx:id="colHeureDep" text="Départ" prefWidth="120"/>
+                    <TableColumn fx:id="colHeureArr" text="Arrivée" prefWidth="120"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

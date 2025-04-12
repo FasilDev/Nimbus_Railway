@@ -64,9 +64,8 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>
-                                com.nimbus_railway.nimbusrailway/com.nimbus_railway.nimbusrailway.HelloApplication
-                            </mainClass>
+                            <mainClass>com.nimbus_railway.Main</mainClass>
+
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

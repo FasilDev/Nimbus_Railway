@@ -76,3 +76,4 @@ public class Train {
     public String toString() {
         return "Train #" + id + " - " + typeTrain.getDisplayName() + " (" + nombreWagons + " wagons)";
     }
+}

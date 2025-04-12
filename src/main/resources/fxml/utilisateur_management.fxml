@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.nimbus_railway.controllers.UtilisateurController"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #9C27B0; -fx-padding: 10px;">
+            <Label text="Gestion des Utilisateurs" textFill="WHITE" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="btnRetour" text="Retour" onAction="#handleRetour"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 20px;">
+            <Label text="Nom:"/>
+            <TextField fx:id="txtNom"/>
+
+            <Label text="Prénom:"/>
+            <TextField fx:id="txtPrenom"/>
+
+            <Label text="Identifiant:"/>
+            <TextField fx:id="txtIdentifiant"/>
+
+            <Label text="Mot de passe:"/>
+            <PasswordField fx:id="txt
