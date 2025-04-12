@@ -30,8 +30,9 @@ public class AdminController {
 
     @FXML
     private void handleGestionUtilisateurs(ActionEvent event) {
-        loadScreen(event, "/fxml/utilisateurs_management.fxml");
+        loadScreen(event, "/fxml/utilisateur_management.fxml");
     }
+
 
     @FXML
     private void handleGestionEleves(ActionEvent event) {

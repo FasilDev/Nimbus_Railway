@@ -38,7 +38,7 @@ public class TrajetController {
 
     private final TrajetDAO trajetDAO = new TrajetDAO();
     private final ObservableList<Trajet> trajets = FXCollections.observableArrayList();
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
 
     @FXML
