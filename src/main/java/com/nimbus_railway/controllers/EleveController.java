@@ -22,47 +22,21 @@ import java.util.stream.Collectors;
 
 public class EleveController {
 
-    @FXML
-    private Button btnRetour;
+    @FXML private Button btnRetour;
+    @FXML private TextField txtNom;
+    @FXML private TextField txtPrenom;
+    @FXML private ComboBox<String> cboMaison;
+    @FXML private Button btnAjouter;
+    @FXML private Button btnModifier;
+    @FXML private Button btnSupprimer;
+    @FXML private Label lblMessage;
+    @FXML private TextField txtRecherche;
 
-    @FXML
-    private TextField txtNom;
-
-    @FXML
-    private TextField txtPrenom;
-
-    @FXML
-    private ComboBox<String> cboMaison;
-
-    @FXML
-    private Button btnAjouter;
-
-    @FXML
-    private Button btnModifier;
-
-    @FXML
-    private Button btnSupprimer;
-
-    @FXML
-    private Label lblMessage;
-
-    @FXML
-    private TextField txtRecherche;
-
-    @FXML
-    private TableView<Eleve> tableEleve;
-
-    @FXML
-    private TableColumn<Eleve, Integer> colId;
-
-    @FXML
-    private TableColumn<Eleve, String> colNom;
-
-    @FXML
-    private TableColumn<Eleve, String> colPrenom;
-
-    @FXML
-    private TableColumn<Eleve, String> colMaison;
+    @FXML private TableView<Eleve> tableEleves;
+    @FXML private TableColumn<Eleve, Integer> colId;
+    @FXML private TableColumn<Eleve, String> colNom;
+    @FXML private TableColumn<Eleve, String> colPrenom;
+    @FXML private TableColumn<Eleve, String> colMaison;
 
     private EleveDAO eleveDAO;
     private ObservableList<Eleve> elevesList = FXCollections.observableArrayList();
@@ -71,43 +45,23 @@ public class EleveController {
     @FXML
     void handleAjouter(ActionEvent event) {
         try {
-            // Validation des entrées
-            if (txtNom.getText().trim().isEmpty()) {
-                lblMessage.setText("Veuillez entrer un nom");
+            if (txtNom.getText().trim().isEmpty() || txtPrenom.getText().trim().isEmpty() || cboMaison.getSelectionModel().isEmpty()) {
+                lblMessage.setText("Tous les champs sont obligatoires");
                 return;
             }
 
-            if (txtPrenom.getText().trim().isEmpty()) {
-                lblMessage.setText("Veuillez entrer un prénom");
-                return;
-            }
-
-            if (cboMaison.getSelectionModel().isEmpty()) {
-                lblMessage.setText("Veuillez sélectionner une maison");
-                return;
-            }
-
-            // Création de l'élève
             String nom = txtNom.getText().trim();
             String prenom = txtPrenom.getText().trim();
-            String maisonStr = cboMaison.getValue();
-            Eleve.Maison maison = Eleve.Maison.fromDisplayName(maisonStr);
-
+            Eleve.Maison maison = Eleve.Maison.fromDisplayName(cboMaison.getValue());
             Eleve nouvelEleve = new Eleve(nom, prenom, maison);
 
-            // Ajout en base de données
             if (eleveDAO.ajouterEleve(nouvelEleve)) {
                 lblMessage.setText("Élève ajouté avec succès");
-
-                // Mise à jour de la liste des élèves
                 elevesList.add(nouvelEleve);
-
-                // Réinitialisation des champs
                 clearFields();
             } else {
                 lblMessage.setText("Erreur lors de l'ajout de l'élève");
             }
-
         } catch (Exception e) {
             lblMessage.setText("Erreur: " + e.getMessage());
             e.printStackTrace();
@@ -117,55 +71,29 @@ public class EleveController {
     @FXML
     void handleModifier(ActionEvent event) {
         try {
-            Eleve selectedEleve = tableEleve.getSelectionModel().getSelectedItem();
+            Eleve selectedEleve = tableEleves.getSelectionModel().getSelectedItem();
             if (selectedEleve == null) {
-                lblMessage.setText("Veuillez sélectionner un élève à modifier");
+                lblMessage.setText("Veuillez sélectionner un élève");
                 return;
             }
 
-            // Validation des entrées
-            if (txtNom.getText().trim().isEmpty()) {
-                lblMessage.setText("Veuillez entrer un nom");
-                return;
-            }
-
-            if (txtPrenom.getText().trim().isEmpty()) {
-                lblMessage.setText("Veuillez entrer un prénom");
-                return;
-            }
-
-            if (cboMaison.getSelectionModel().isEmpty()) {
-                lblMessage.setText("Veuillez sélectionner une maison");
-                return;
-            }
-
-            // Modification de l'élève
             String nom = txtNom.getText().trim();
             String prenom = txtPrenom.getText().trim();
-            String maisonStr = cboMaison.getValue();
-            Eleve.Maison maison = Eleve.Maison.fromDisplayName(maisonStr);
+            Eleve.Maison maison = Eleve.Maison.fromDisplayName(cboMaison.getValue());
 
             selectedEleve.setNom(nom);
             selectedEleve.setPrenom(prenom);
             selectedEleve.setMaison(maison);
 
-            // Mise à jour en base de données
             if (eleveDAO.modifierEleve(selectedEleve)) {
                 lblMessage.setText("Élève modifié avec succès");
-
-                // Mise à jour de la liste des élèves
                 int index = elevesList.indexOf(selectedEleve);
-                if (index >= 0) {
-                    elevesList.set(index, selectedEleve);
-                }
-
-                // Réinitialisation des champs
+                if (index >= 0) elevesList.set(index, selectedEleve);
                 clearFields();
-                tableEleve.getSelectionModel().clearSelection();
+                tableEleves.getSelectionModel().clearSelection();
             } else {
-                lblMessage.setText("Erreur lors de la modification de l'élève");
+                lblMessage.setText("Erreur lors de la modification");
             }
-
         } catch (Exception e) {
             lblMessage.setText("Erreur: " + e.getMessage());
             e.printStackTrace();
@@ -175,37 +103,26 @@ public class EleveController {
     @FXML
     void handleSupprimer(ActionEvent event) {
         try {
-            Eleve selectedEleve = tableEleve.getSelectionModel().getSelectedItem();
+            Eleve selectedEleve = tableEleves.getSelectionModel().getSelectedItem();
             if (selectedEleve == null) {
-                lblMessage.setText("Veuillez sélectionner un élève à supprimer");
+                lblMessage.setText("Sélectionnez un élève à supprimer");
                 return;
             }
 
-            // Confirmation de suppression
             boolean confirm = AlertUtils.showConfirmation(
-                    "Confirmation de suppression",
-                    "Supprimer l'élève",
-                    "Êtes-vous sûr de vouloir supprimer l'élève " + selectedEleve.getPrenom() + " " + selectedEleve.getNom() + " ?"
-            );
+                    "Confirmation", "Supprimer Élève",
+                    "Confirmer la suppression de : " + selectedEleve.getPrenom() + " " + selectedEleve.getNom());
 
-            if (!confirm) {
-                return;
-            }
+            if (!confirm) return;
 
-            // Suppression en base de données
             if (eleveDAO.supprimerEleve(selectedEleve.getId())) {
-                lblMessage.setText("Élève supprimé avec succès");
-
-                // Mise à jour de la liste des élèves
                 elevesList.remove(selectedEleve);
-
-                // Réinitialisation des champs
                 clearFields();
-                tableEleve.getSelectionModel().clearSelection();
+                tableEleves.getSelectionModel().clearSelection();
+                lblMessage.setText("Élève supprimé");
             } else {
-                lblMessage.setText("Erreur lors de la suppression de l'élève");
+                lblMessage.setText("Erreur lors de la suppression");
             }
-
         } catch (Exception e) {
             lblMessage.setText("Erreur: " + e.getMessage());
             e.printStackTrace();
@@ -217,13 +134,11 @@ public class EleveController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin_dashboard.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            stage.setScene(new Scene(root));
             stage.setTitle("Nimbus Railway - Administration");
             stage.show();
         } catch (IOException e) {
-            lblMessage.setText("Erreur lors du chargement du dashboard");
-            System.err.println("Erreur: " + e.getMessage());
+            lblMessage.setText("Erreur chargement dashboard");
             e.printStackTrace();
         }
     }
@@ -236,89 +151,56 @@ public class EleveController {
 
     @FXML
     public void initialize() {
-        // Initialisation du DAO
         eleveDAO = new EleveDAO();
 
-        // Configuration des colonnes du tableau
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         colPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
-        colMaison.setCellValueFactory(cellData -> {
-            Eleve eleve = cellData.getValue();
-            return javafx.beans.binding.Bindings.createStringBinding(
-                    () -> eleve.getMaison().getDisplayName()
-            );
-        });
+        colMaison.setCellValueFactory(cellData ->
+                javafx.beans.binding.Bindings.createStringBinding(() ->
+                        cellData.getValue().getMaison().getDisplayName()
+                )
+        );
 
-        // Chargement des données
         loadEleves();
 
-        // Initialisation du combobox des maisons
         cboMaison.getItems().addAll(
                 Arrays.stream(Eleve.Maison.values())
                         .map(Eleve.Maison::getDisplayName)
                         .collect(Collectors.toList())
         );
 
-        // Configuration de la sélection dans le tableau
-        tableEleve.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                txtNom.setText(newSelection.getNom());
-                txtPrenom.setText(newSelection.getPrenom());
-                cboMaison.setValue(newSelection.getMaison().getDisplayName());
+        tableEleves.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                txtNom.setText(newVal.getNom());
+                txtPrenom.setText(newVal.getPrenom());
+                cboMaison.setValue(newVal.getMaison().getDisplayName());
             }
         });
 
-        // Configuration de la recherche
         txtRecherche.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredEleves.setPredicate(eleve -> {
-                // Si le champ de recherche est vide, afficher tous les élèves
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
+                if (newValue == null || newValue.isEmpty()) return true;
 
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                // Recherche par nom
-                if (eleve.getNom().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-
-                // Recherche par prénom
-                if (eleve.getPrenom().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-
-                // Recherche par maison
-                if (eleve.getMaison().getDisplayName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                }
-
-                // Recherche par ID
-                return String.valueOf(eleve.getId()).contains(lowerCaseFilter);
+                String filtre = newValue.toLowerCase();
+                return eleve.getNom().toLowerCase().contains(filtre) ||
+                        eleve.getPrenom().toLowerCase().contains(filtre) ||
+                        eleve.getMaison().getDisplayName().toLowerCase().contains(filtre) ||
+                        String.valueOf(eleve.getId()).contains(filtre);
             });
         });
     }
 
     private void loadEleves() {
         try {
-            // Récupération des élèves
             elevesList.clear();
             elevesList.addAll(eleveDAO.getTousEleves());
-
-            // Configuration de la liste filtrée
             filteredEleves = new FilteredList<>(elevesList, p -> true);
+            tableEleves.setItems(filteredEleves);
 
-            // Liaison de la liste filtrée avec le tableau
-            tableEleve.setItems(filteredEleves);
-
-            if (elevesList.isEmpty()) {
-                lblMessage.setText("Aucun élève trouvé");
-            } else {
-                lblMessage.setText("");
-            }
+            lblMessage.setText(elevesList.isEmpty() ? "Aucun élève trouvé" : "");
         } catch (Exception e) {
-            lblMessage.setText("Erreur lors du chargement des élèves: " + e.getMessage());
+            lblMessage.setText("Erreur chargement élèves: " + e.getMessage());
             e.printStackTrace();
         }
     }

@@ -4,7 +4,6 @@ import com.nimbus_railway.dao.UtilisateurDAO;
 import com.nimbus_railway.models.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
@@ -13,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class UtilisateurController {
 
@@ -59,7 +57,7 @@ public class UtilisateurController {
     }
 
     @FXML
-    void handleAjouter(ActionEvent event) {
+    void handleAjouter() {
         try {
             Utilisateur utilisateur = new Utilisateur(
                     txtIdentifiant.getText(),
@@ -81,7 +79,7 @@ public class UtilisateurController {
     }
 
     @FXML
-    void handleModifier(ActionEvent event) {
+    void handleModifier() {
         Utilisateur selected = tableUtilisateurs.getSelectionModel().getSelectedItem();
         if (selected != null) {
             selected.setNom(txtNom.getText());
@@ -92,36 +90,34 @@ public class UtilisateurController {
 
             if (utilisateurDAO.modifierUtilisateur(selected)) {
                 tableUtilisateurs.refresh();
-                lblMessage.setText("Utilisateur modifié.");
+                lblMessage.setText("Modifié.");
                 clearFields();
             } else {
-                lblMessage.setText("Erreur de modification.");
+                lblMessage.setText("Erreur.");
             }
         }
     }
 
     @FXML
-    void handleSupprimer(ActionEvent event) {
+    void handleSupprimer() {
         Utilisateur selected = tableUtilisateurs.getSelectionModel().getSelectedItem();
         if (selected != null && utilisateurDAO.supprimerUtilisateur(selected.getId())) {
             utilisateurs.remove(selected);
-            lblMessage.setText("Utilisateur supprimé.");
+            lblMessage.setText("Supprimé.");
             clearFields();
         } else {
-            lblMessage.setText("Erreur de suppression.");
+            lblMessage.setText("Sélection invalide.");
         }
     }
 
     @FXML
-    void handleRetour(ActionEvent event) {
+    void handleRetour() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/admin_dashboard.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) btnRetour.getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Nimbus Railway - Administration");
-            stage.show();
         } catch (IOException e) {
-            lblMessage.setText("Erreur lors du retour.");
+            lblMessage.setText("Erreur retour");
         }
     }
 

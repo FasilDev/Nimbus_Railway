@@ -5,85 +5,59 @@ import com.nimbus_railway.models.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class LoginController {
 
-    @FXML
-    private TextField txtIdentifiant;
+    @FXML private TextField txtIdentifiant;
+    @FXML private PasswordField txtMotDePasse;
+    @FXML private Label lblMessage;
 
-    @FXML
-    private PasswordField txtMotDePasse;
-
-    @FXML
-    private Button btnConnexion;
-
-    @FXML
-    private Label lblMessage;
+    private final UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
     @FXML
     void handleConnexion(ActionEvent event) {
         String identifiant = txtIdentifiant.getText();
         String motDePasse = txtMotDePasse.getText();
 
-        // Validation basique
-        if (identifiant.isEmpty() || motDePasse.isEmpty()) {
-            lblMessage.setText("Veuillez remplir tous les champs");
-            return;
-        }
-
-        // Vérification des identifiants
-        UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         Utilisateur utilisateur = utilisateurDAO.authentifier(identifiant, motDePasse);
 
         if (utilisateur != null) {
+            lblMessage.setText("Connexion réussie");
+
             try {
-                // Redirection vers le dashboard approprié selon le rôle
-                String fxmlFile = utilisateur.getRole() == Utilisateur.Role.ADMIN
-                        ? "/fxml/admin_dashboard.fxml"
-                        : "/fxml/controleur_dashboard.fxml";
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-                Parent root = loader.load();
-
-                // Passage de l'utilisateur connecté au contrôleur de destination
+                FXMLLoader loader;
                 if (utilisateur.getRole() == Utilisateur.Role.ADMIN) {
-                    AdminController controller = loader.getController();
-                    controller.initData(utilisateur);
+                    loader = new FXMLLoader(getClass().getResource("/fxml/admin_dashboard.fxml"));
                 } else {
-                    ControleurController controller = loader.getController();
-                    controller.initData(utilisateur);
+                    loader = new FXMLLoader(getClass().getResource("/fxml/controleur_dashboard.fxml"));
                 }
 
-                // Changement de scène
+                Parent root = loader.load();
+
+                // Passage de l'utilisateur au contrôleur
+                Object controller = loader.getController();
+                if (controller instanceof AdminController adminCtrl) {
+                    adminCtrl.initData(utilisateur);
+                } else if (controller instanceof ControleurController ctrlCtrl) {
+                    ctrlCtrl.initData(utilisateur);
+                }
+
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setTitle("Nimbus Railway - " + (utilisateur.getRole() == Utilisateur.Role.ADMIN ? "Administration" : "Contrôleur"));
+                stage.setScene(new Scene(root));
+                stage.setTitle("Dashboard - Nimbus Railway");
                 stage.show();
 
             } catch (IOException e) {
-                lblMessage.setText("Erreur lors du chargement du dashboard");
-                System.err.println("Erreur: " + e.getMessage());
+                lblMessage.setText("Erreur chargement interface : " + e.getMessage());
                 e.printStackTrace();
             }
         } else {
-            lblMessage.setText("Identifiant ou mot de passe incorrect");
+            lblMessage.setText("Identifiants incorrects");
         }
-    }
-
-    @FXML
-    public void initialize() {
-        // Initialisation si nécessaire
-        lblMessage.setText("");
     }
 }

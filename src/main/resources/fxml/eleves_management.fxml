@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.nimbus_railway.controllers.EleveController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <Label text="Gestion des Élèves" style="-fx-font-size: 20px; -fx-padding: 10px;" />
+    </top>
 
-</AnchorPane>
+    <center>
+        <VBox spacing="10" padding="15">
+            <HBox spacing="10">
+                <TextField fx:id="txtNom" promptText="Nom" />
+                <TextField fx:id="txtPrenom" promptText="Prénom" />
+                <ComboBox fx:id="cboMaison" promptText="Maison" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Button fx:id="btnAjouter" text="Ajouter" onAction="#handleAjouter" />
+                <Button fx:id="btnModifier" text="Modifier" onAction="#handleModifier" />
+                <Button fx:id="btnSupprimer" text="Supprimer" onAction="#handleSupprimer" />
+                <TextField fx:id="txtRecherche" promptText="🔍 Rechercher..." />
+            </HBox>
+
+            <TableView fx:id="tableEleves" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="150" />
+                    <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="150" />
+                    <TableColumn fx:id="colMaison" text="Maison" prefWidth="100" />
+                </columns>
+            </TableView>
+
+            <Label fx:id="lblMessage" textFill="RED" />
+            <Button fx:id="btnRetour" text="Retour" onAction="#handleRetour" />
+        </VBox>
+    </center>
+</BorderPane>
