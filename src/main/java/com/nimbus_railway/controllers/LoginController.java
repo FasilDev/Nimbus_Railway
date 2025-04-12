@@ -31,19 +31,17 @@ public class LoginController {
 
             try {
                 FXMLLoader loader;
+                Parent root;
+
                 if (utilisateur.getRole() == Utilisateur.Role.ADMIN) {
                     loader = new FXMLLoader(getClass().getResource("/fxml/admin_dashboard.fxml"));
+                    root = loader.load();
+                    AdminController adminCtrl = loader.getController();
+                    adminCtrl.initData(utilisateur);
                 } else {
                     loader = new FXMLLoader(getClass().getResource("/fxml/controleur_dashboard.fxml"));
-                }
-
-                Parent root = loader.load();
-
-                // Passage de l'utilisateur au contrôleur
-                Object controller = loader.getController();
-                if (controller instanceof AdminController adminCtrl) {
-                    adminCtrl.initData(utilisateur);
-                } else if (controller instanceof ControleurController ctrlCtrl) {
+                    root = loader.load();
+                    ControleurController ctrlCtrl = loader.getController();
                     ctrlCtrl.initData(utilisateur);
                 }
 
@@ -56,6 +54,7 @@ public class LoginController {
                 lblMessage.setText("Erreur chargement interface : " + e.getMessage());
                 e.printStackTrace();
             }
+
         } else {
             lblMessage.setText("Identifiants incorrects");
         }

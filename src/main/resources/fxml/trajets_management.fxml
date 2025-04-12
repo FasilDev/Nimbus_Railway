@@ -7,7 +7,9 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.nimbus_railway.controllers.TrajetController"
-            prefHeight="600.0" prefWidth="800.0">
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="@../css/styles.css">
+
     <top>
         <HBox alignment="CENTER_LEFT" style="-fx-background-color: #FF9800; -fx-padding: 10px;">
             <Label text="Gestion des Trajets" textFill="WHITE" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>

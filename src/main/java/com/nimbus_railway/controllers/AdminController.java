@@ -18,27 +18,24 @@ public class AdminController {
         System.out.println("Connecté en tant que : " + utilisateur.getNom());
     }
 
-    @FXML
-    private void handleGestionTrains(ActionEvent event) {
-        loadScreen(event, "/fxml/trains_management.fxml");
+    @FXML private void handleGestionEleves(ActionEvent e) {
+        loadScreen(e, "/fxml/eleves_management.fxml");
     }
 
-    @FXML
-    private void handleGestionTrajets(ActionEvent event) {
-        loadScreen(event, "/fxml/trajets_management.fxml");
+    @FXML private void handleGestionUtilisateurs(ActionEvent e) {
+        loadScreen(e, "/fxml/utilisateur_management.fxml");
     }
 
-    @FXML
-    private void handleGestionUtilisateurs(ActionEvent event) {
-        loadScreen(event, "/fxml/utilisateur_management.fxml");
+    @FXML private void handleGestionTrajets(ActionEvent e) {
+        loadScreen(e, "/fxml/trajets_management.fxml");
+    }
+
+    @FXML private void handleGestionTrains(ActionEvent e) {
+        loadScreen(e, "/fxml/trains_management.fxml");
     }
 
 
     @FXML
-    private void handleGestionEleves(ActionEvent event) {
-        loadScreen(event, "/fxml/eleves_management.fxml");
-    }
-
     private void loadScreen(ActionEvent event, String path) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -46,12 +43,30 @@ public class AdminController {
 
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Gestion - Nimbus Railway");
+            stage.setTitle("Nimbus Railway - Gestion");
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Erreur lors du chargement de l'écran : " + path);
+            // Ajoute cette ligne aussi pour être sûr de voir le problème :
+            System.err.println("Impossible de charger : " + path);
         }
     }
+
+    @FXML
+    private void handleRetourLogin(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Connexion");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

@@ -6,11 +6,15 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.nimbus_railway.controllers.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@../css/styles.css"
+            fx:id="root" styleClass="dashboard" >
 
     <center>
         <VBox spacing="15" alignment="CENTER">
             <Label text="Dashboard Administrateur" style="-fx-font-size: 24px;" />
+
+            <Button text="Déconnexion" onAction="#handleRetourLogin" />
 
             <Button fx:id="btnGestionEleves" text="Gestion des Élèves" onAction="#handleGestionEleves" />
             <Button fx:id="btnGestionUtilisateurs" text="Gestion des Utilisateurs" onAction="#handleGestionUtilisateurs" />
@@ -18,4 +22,5 @@
             <Button fx:id="btnGestionTrains" text="Gestion des Trains" onAction="#handleGestionTrains" />
         </VBox>
     </center>
+
 </BorderPane>

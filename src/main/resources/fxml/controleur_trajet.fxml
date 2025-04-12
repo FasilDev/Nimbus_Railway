@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.nimbus_railway.controllers.ControleurTrajetsController"
+            stylesheets="@../css/styles.css"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <top>
+        <Label text="Liste des Trajets" style="-fx-font-size: 20px; -fx-padding: 10px;" />
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <TableView fx:id="tableTrajets" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colDepart" text="Gare de départ" prefWidth="160"/>
+                    <TableColumn fx:id="colArrivee" text="Gare d’arrivée" prefWidth="160"/>
+                    <TableColumn fx:id="colHeureDep" text="Départ" prefWidth="120"/>
+                    <TableColumn fx:id="colHeureArr" text="Arrivée" prefWidth="120"/>
+                    <TableColumn fx:id="colTrain" text="Train" prefWidth="150"/>
+                </columns>
+            </TableView>
+
+            <Button text="Retour" onAction="#handleRetour" />
+        </VBox>
+    </center>
+</BorderPane>

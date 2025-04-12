@@ -7,13 +7,18 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.nimbus_railway.controllers.EleveController"
-            prefHeight="600.0" prefWidth="800.0">
+            prefHeight="600.0" prefWidth="800.0"
+             stylesheets="@../css/styles.css">
     <top>
         <Label text="Gestion des Élèves" style="-fx-font-size: 20px; -fx-padding: 10px;" />
     </top>
 
     <center>
-        <VBox spacing="10" padding="15">
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
             <HBox spacing="10">
                 <TextField fx:id="txtNom" promptText="Nom" />
                 <TextField fx:id="txtPrenom" promptText="Prénom" />

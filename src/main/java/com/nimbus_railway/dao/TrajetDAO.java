@@ -201,6 +201,9 @@ public class TrajetDAO {
 
         return false;
     }
+    public List<Trajet> getAll() {
+        return getTousTrajets();
+    }
 
     private Trajet creerTrajetDepuisResultSet(ResultSet rs) throws SQLException {
         int id = rs.getInt("id");

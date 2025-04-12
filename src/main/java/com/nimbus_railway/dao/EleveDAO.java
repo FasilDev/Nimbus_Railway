@@ -123,6 +123,9 @@ public class EleveDAO {
 
         return false;
     }
+    public List<Eleve> getAll() {
+        return getTousEleves();
+    }
 
     public List<Eleve> getElevesByMaison(Eleve.Maison maison) {
         List<Eleve> eleves = new ArrayList<>();

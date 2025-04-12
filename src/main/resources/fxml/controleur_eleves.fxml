@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.nimbus_railway.controllers.ControleurElevesController"
+            stylesheets="@../css/styles.css"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <top>
+        <Label text="Liste des Élèves" style="-fx-font-size: 20px; -fx-padding: 10px;" />
+    </top>
+
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <TableView fx:id="tableEleves" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                    <TableColumn fx:id="colNom" text="Nom" prefWidth="150" />
+                    <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="150" />
+                    <TableColumn fx:id="colMaison" text="Maison" prefWidth="100" />
+                </columns>
+            </TableView>
+            <Button text="Retour" onAction="#handleRetour" />
+        </VBox>
+    </center>
+</BorderPane>
